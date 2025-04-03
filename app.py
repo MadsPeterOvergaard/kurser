@@ -30,7 +30,11 @@ def read_excel_files(folder_path, data_cells, data_descs):
             sheet = wb.active  # or use wb["SheetName"] if you know it
 
             # Extract values into a dictionary
-            if sheet[data_cells[0]].value is not None:
+            if (
+                sheet[data_cells[0]].value is not None
+                and sheet[data_cells[0]].value != ""
+                and sheet[data_cells[0]].value != "Jonaz"
+            ):
                 students[sheet[data_cells[0]].value] = {}
                 for cell, desc in zip(data_cells, data_descs):
                     # Skip the first cell (student ID) as it's already used as the key
@@ -216,112 +220,112 @@ if __name__ == "__main__":
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 25,
         },
         "C2": {
             "subject": "Street furniture",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 25,
         },
         "C3": {
             "subject": "Rap",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 20,
         },
         "C4": {
             "subject": "Upcycling",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 18,
         },
         "C5": {
             "subject": "Street food",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 14,
         },
         "C6": {
             "subject": "Ultimate",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 30,
         },
         "C7": {
             "subject": "Beatz",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 20,
+            "capacity": 15,
         },
         "C8": {
             "subject": "Graffiti",
             "day": "Mon",
             "start": 8,
             "duration": 8,
-            "capacity": 20,
+            "capacity": 17,
         },
         "C11": {
             "subject": "Hip hop",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 25,
         },
         "C12": {
             "subject": "Street furniture",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 25,
         },
         "C13": {
             "subject": "Rap",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 20,
         },
         "C14": {
             "subject": "Upcycling",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 18,
         },
         "C15": {
             "subject": "Street food",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 14,
         },
         "C16": {
             "subject": "Ultimate",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 10,
+            "capacity": 30,
         },
         "C17": {
             "subject": "Beatz",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 20,
+            "capacity": 15,
         },
         "C18": {
             "subject": "Graffiti",
             "day": "Tue",
             "start": 8,
             "duration": 8,
-            "capacity": 20,
+            "capacity": 17,
         },
     }
 
