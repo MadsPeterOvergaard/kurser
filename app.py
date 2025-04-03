@@ -30,21 +30,19 @@ def read_excel_files(folder_path, data_cells, data_descs):
             sheet = wb.active  # or use wb["SheetName"] if you know it
 
             # Extract values into a dictionary
-            students[sheet[data_cells[0]].value] = {}
-            for cell, desc in zip(data_cells, data_descs):
-                # Skip the first cell (student ID) as it's already used as the key
-                if cell == data_cells[0]:
-                    continue
-                # Check if the cell is empty
-                if sheet[cell].value is None:
-                    continue
-                # Add the value to the dictionary with the description as the key
-                students[sheet[data_cells[0]].value][sheet[desc].value] = sheet[
-                    cell
-                ].value
-                students[sheet[data_cells[0]].value][sheet[desc].value + "b"] = sheet[
-                    cell
-                ].value
+            if sheet[data_cells[0]].value is not None:
+                students[sheet[data_cells[0]].value] = {}
+                for cell, desc in zip(data_cells, data_descs):
+                    # Skip the first cell (student ID) as it's already used as the key
+                    if cell == data_cells[0]:
+                        continue
+                    # Check if the cell is empty
+                    if sheet[cell].value is None:
+                        continue
+                    # Add the value to the dictionary with the description as the key
+                    students[sheet[data_cells[0]].value][sheet[desc].value] = sheet[
+                        cell
+                    ].value
 
         except Exception as e:
             print(f"Error reading {file_path}: {e}")
@@ -83,8 +81,10 @@ if __name__ == "__main__":
 
     print("Reading Excel files...")
     students = read_excel_files(folder_path, data_cells, data_descs)
-    print(students)
+
     print("Done.")
+    for student, preferences in students.items():
+        print(f"{student}: {preferences}")
 
     # students = {
     #     "Alice": {
@@ -215,7 +215,7 @@ if __name__ == "__main__":
             "subject": "Hip hop",
             "day": "Mon",
             "start": 8,
-            "duration": 4,
+            "duration": 8,
             "capacity": 10,
         },
         "C2": {
@@ -250,7 +250,7 @@ if __name__ == "__main__":
             "subject": "Ultimate",
             "day": "Mon",
             "start": 8,
-            "duration": 4,
+            "duration": 8,
             "capacity": 10,
         },
         "C7": {
@@ -267,25 +267,11 @@ if __name__ == "__main__":
             "duration": 8,
             "capacity": 20,
         },
-        "C9": {
-            "subject": "Hip hop",
-            "day": "Mon",
-            "start": 13,
-            "duration": 4,
-            "capacity": 10,
-        },
-        "C10": {
-            "subject": "Ultimate",
-            "day": "Mon",
-            "start": 13,
-            "duration": 4,
-            "capacity": 10,
-        },
         "C11": {
             "subject": "Hip hop",
             "day": "Tue",
             "start": 8,
-            "duration": 4,
+            "duration": 8,
             "capacity": 10,
         },
         "C12": {
@@ -320,7 +306,7 @@ if __name__ == "__main__":
             "subject": "Ultimate",
             "day": "Tue",
             "start": 8,
-            "duration": 4,
+            "duration": 8,
             "capacity": 10,
         },
         "C17": {
@@ -336,20 +322,6 @@ if __name__ == "__main__":
             "start": 8,
             "duration": 8,
             "capacity": 20,
-        },
-        "C19": {
-            "subject": "Hip hop",
-            "day": "Tue",
-            "start": 13,
-            "duration": 4,
-            "capacity": 10,
-        },
-        "C20": {
-            "subject": "Ultimate",
-            "day": "Tue",
-            "start": 13,
-            "duration": 4,
-            "capacity": 10,
         },
     }
 
